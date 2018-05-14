@@ -19,7 +19,7 @@ module.exports = {
     var scopeOverrides = config.scopeOverrides || {};
     var messages = config.messages || {};
 
-    messages.type = messages.type || 'Select the type of change that you\'re committing2222:';
+    messages.type = messages.type || 'Select the type of change that you\'re committing:';
     messages.scope = messages.scope || '\nDenote the SCOPE of this change (optional):';
     messages.customScope = messages.customScope || 'Denote the SCOPE of this change:';
     messages.subject = messages.subject || 'Write a SHORT, IMPERATIVE tense description of the change:\n';
