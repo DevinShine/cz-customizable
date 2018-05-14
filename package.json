@@ -1,6 +1,6 @@
 {
-  "version": "0.0.0-semantically-released",
-  "name": "cz-customizable",
+  "version": "1.0.0",
+  "name": "cz-customizable-for-studio",
   "description": "Commitizen customizable adapter following the conventional-changelog format.",
   "main": "index.js",
   "scripts": {
@@ -12,14 +12,14 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "homepage": "https://github.com/leonardoanalista/cz-customizable",
+  "homepage": "https://github.com/DevinShine/cz-customizable",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leonardoanalista/cz-customizable.git"
+    "url": "git+https://github.com/DevinShine/cz-customizable.git"
   },
   "author": "Leonardo Correa <leonardoanalista@gmail.com>",
   "contributors": [
-    "Aleksey Guryanov <gurianov@gmail.com>"
+    "Devin Shine <devin.xdw@gmail.com>"
   ],
   "license": "MIT",
   "dependencies": {
@@ -50,5 +50,13 @@
     "ghooks": {
       "pre-commit": "npm run eslint && npm run test"
     }
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/DevinShine/cz-customizable/issues"
+  },
+  "keywords": [
+    "fork",
+    "from",
+    "cz-customizable"
+  ]
 }

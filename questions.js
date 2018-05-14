@@ -12,12 +12,14 @@ var isNotWip = function(answers) {
 module.exports = {
 
   getQuestions: function(config, cz) {
+    // bad code
+    var answerListType = '';
 
     // normalize config optional options
     var scopeOverrides = config.scopeOverrides || {};
     var messages = config.messages || {};
 
-    messages.type = messages.type || 'Select the type of change that you\'re committing:';
+    messages.type = messages.type || 'Select the type of change that you\'re committing2222:';
     messages.scope = messages.scope || '\nDenote the SCOPE of this change (optional):';
     messages.customScope = messages.customScope || 'Denote the SCOPE of this change:';
     messages.subject = messages.subject || 'Write a SHORT, IMPERATIVE tense description of the change:\n';
@@ -54,6 +56,8 @@ module.exports = {
           return scopes;
         },
         when: function(answers) {
+          answerListType = answers.type
+
           var hasScope = false;
           if (scopeOverrides[answers.type]) {
             hasScope = !!(scopeOverrides[answers.type].length > 0);
@@ -81,6 +85,11 @@ module.exports = {
         name: 'subject',
         message: messages.subject,
         validate: function(value) {
+          if (answerListType === 'feat' && (!value.includes('--task') && !value.includes('--story'))) {
+            return '[feat] need \'--task\' or \'--story\' key';
+          } else if (answerListType === 'fix' && !value.includes('--bug')) {
+            return '[fix] need \'--bug\' key';
+          }
           return !!value;
         },
         filter: function(value) {
@@ -107,7 +116,12 @@ module.exports = {
         type: 'input',
         name: 'footer',
         message: messages.footer,
-        when: isNotWip
+        when: function(answers) {
+          if (config.disableShowFooter) {
+            return false;
+          }
+          return isNotWip(answers);
+        }
       },
       {
         type: 'expand',
